@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load static wagtailimages_tags%}
+{% load static wagtailimages_tags wagtailcore_tags%}
 
 {% block body_class %}template-genericpage{% endblock %}
 
@@ -17,7 +17,13 @@
       <p>
       <h3>{{ page.introduction }}</h3>
       </p>
-   </div>
+      {% image page.author.image fill-100x100  %}
+      <p>
+      <h3>{{ page.author.name }}</h3>
+      </p>
+  </div>
  </div>
 </div>
+<hr>
+{% include_block page.body %}
 {% endblock content %}
