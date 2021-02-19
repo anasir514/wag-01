@@ -1,10 +1,13 @@
 from django.db import models
 
 from wagtail.core.models import Page
-from wagtail.admin.edit_handlers import FieldPanel
+from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.snippets.models import register_snippet
 from wagtail.snippets.edit_handlers import SnippetChooserPanel
+from wagtail.core.fields import StreamField
+from wagtail.core import blocks
+from wagtail.images.blocks import ImageChooserBlock 
 
 class GenericPage(Page):
     banner_title = models.CharField(
@@ -26,11 +29,19 @@ class GenericPage(Page):
         blank=False,
         related_name='+',
     )
+    body = StreamField([
+        # ('name',block.somthingbloxk()),
+        ('heading',blocks.CharBlock()),
+        ('image',ImageChooserBlock()),
+        ('paragraph',blocks.RichTextBlock()),
+    ],null=True)
+    
     content_panels = Page.content_panels + [
         FieldPanel("banner_title"),
         FieldPanel("introduction"),
         ImageChooserPanel("banner_image"),
-        SnippetChooserPanel("auther"),
+        SnippetChooserPanel("author"),
+        StreamFieldPanel("body"),
 
     ]
 
