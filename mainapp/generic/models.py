@@ -31,11 +31,11 @@ class GenericPage(Page):
     )
     body = StreamField([
         # ('name',block.somthingbloxk()),
-        ('heading',blocks.CharBlock()),
+        ('heading',blocks.CharBlock(template="heading_block.html")),
         ('image',ImageChooserBlock()),
         ('paragraph',blocks.RichTextBlock()),
     ],null=True)
-    
+
     content_panels = Page.content_panels + [
         FieldPanel("banner_title"),
         FieldPanel("introduction"),

@@ -1,0 +1,9 @@
+.block-heading{
+    font-size: 35px;
+    margin-top:30;
+}
+
+.block-image img{
+    width: 100%;
+    height: auto;
+}
