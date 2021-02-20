@@ -35,6 +35,13 @@
 
         {% block content %}{% endblock %}
 
+        <footer>
+        {% if settings.site_settings.SocialMediaSettigs.instagram %}
+         <a href="{{ settings.site_settings.SocialMediaSettigs.instagram }}">
+         Follow us</a>
+        {% endif %}
+        </footer>
+
         {# Global javascript #}
         <script type="text/javascript" src="{% static 'js/mainapp.js' %}"></script>
 

@@ -1,3 +1,12 @@
 from django.db import models
 
-# Create your models here.
+from wagtail.admin.edit_handlers import FieldPanel
+from wagtail.contrib.settings.models import BaseSetting,register_setting
+
+@register_setting
+class SocialMediaSettigs(BaseSetting):
+    instagram = models.URLField(max_length=100)
+
+    panels = [
+        FieldPanel("instagram")
+    ]
